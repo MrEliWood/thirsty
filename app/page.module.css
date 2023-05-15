@@ -1,0 +1,30 @@
+.search {
+	border: 0px solid;
+	border-radius: 5px;
+	background: var(--dark05);
+	padding: 2px 10px;
+	margin: var(--small);
+}
+
+.drink_preview {
+	display: flex;
+	align-items: center;
+	gap: var(--small);
+	border-top: 1px solid var(--lightgray);
+	height: var(--huge);
+	width: 100%;
+	max-width: 400px;
+	padding: 0 var(--medium) 0 var(--tiny);
+}
+
+.drink_preview:last-of-type {
+	border-bottom: 1px solid var(--lightgray);
+}
+
+.drink_thumbnail {
+	border-radius: 100%;
+}
+
+.drink_name {
+	width: 100%;
+}

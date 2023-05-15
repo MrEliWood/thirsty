@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import './globals.css';
 
 export const metadata = {
@@ -8,7 +10,18 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body>{children}</body>
+			<body>
+				<header>
+					<h4>Thirsty</h4>
+				</header>
+
+				{children}
+
+				<footer>
+					<Link href='/'>Flaticon Link</Link>
+					<Link href='/'>TheCocktailDB Link</Link>
+				</footer>
+			</body>
 		</html>
 	);
 }
