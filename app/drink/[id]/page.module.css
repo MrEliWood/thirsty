@@ -1,0 +1,47 @@
+.main {
+	padding: var(--large) var(--tiny) var(--medium);
+}
+
+.drink_image {
+	border-radius: 100%;
+}
+
+.drink_name {
+	margin-top: var(--medium);
+}
+
+.ingredients {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: var(--large) var(--medium);
+}
+
+.ingredients_label {
+	margin-bottom: var(--medium);
+}
+
+.ingredients_detail {
+	display: flex;
+	justify-content: space-between;
+}
+
+.ingredients_list {
+	display: flex;
+	flex-direction: column;
+}
+
+.chart {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: var(--giant);
+	height: var(--giant);
+}
+
+.instructions {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0 var(--medium);
+}
