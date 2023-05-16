@@ -1,0 +1,10 @@
+.header {
+	width: 100%;
+	background: rgb(245, 245, 245);
+	border-bottom: 1px solid rgb(221, 221, 221);
+	padding: var(--huge) var(--tiny) var(--tiny) var(--tiny);
+}
+
+.site_title:hover {
+	opacity: 1;
+}

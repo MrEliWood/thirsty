@@ -5,57 +5,32 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { searchDrinks } from '@/utils';
 import styles from './page.module.css';
-
-type drink = {
-	id: string;
-	name: string;
-	image: string;
-};
 
 export default function Home() {
 	const [drinks, setDrinks] = useState<drink[]>([]);
-	const [userSearch, setUserSearch] = useState<string>();
+	const [userSearch, setUserSearch] = useState('');
 
-	const getDrinks = (url: string) => {
-		fetch(url)
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.drinks) {
-					const mappedData: drink[] = data.drinks.map((drink: any) => ({
-						id: drink.idDrink,
-						name: drink.strDrink,
-						image: drink.strDrinkThumb
-					}));
+	const endpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + userSearch;
 
-					setDrinks(mappedData);
-				} else {
-					const mappedData: drink[] = [
-						{
-							id: '',
-							name: '',
-							image: ''
-						}
-					];
-
-					setDrinks(mappedData);
-				}
-			});
-	};
-
-	// on page load, fetch 25 drinks starting with 'a'
-	const endpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a';
-
+	// make api call on page load
 	useEffect(() => {
-		getDrinks(endpoint);
+		searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
 	}, []);
+
+	// debounce user search
+	useEffect(() => {
+		// wait 1/2 second before fetching data, limiting excessive api calls for fast typers
+		const timeout = setTimeout(() => {
+			searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
+		}, 500);
+
+		return () => clearTimeout(timeout);
+	}, [userSearch]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUserSearch(e.target.value);
-
-		const searchEndpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + e.target.value;
-
-		if (e.target.value) getDrinks(searchEndpoint);
 	};
 
 	return (
@@ -64,8 +39,15 @@ export default function Home() {
 				<input type='search' placeholder='Find a drink' value={userSearch} onChange={handleInputChange} />
 			</div>
 
-			{drinks.map((drink: drink) => {
-				if (!drink.id) return <p className={styles.search_error}>Sorry, we couldn't find that one.</p>;
+			{drinks.map((drink: drink, i) => {
+				// if no search results, return error message
+				if (!drink.id) {
+					return (
+						<p key={i} className={styles.search_error}>
+							Sorry, we couldn't find that one.
+						</p>
+					);
+				}
 
 				return (
 					<Link key={drink.id} href={'/drink/' + drink.id} className={styles.drink_preview}>

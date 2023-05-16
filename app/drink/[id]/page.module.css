@@ -27,19 +27,19 @@
 	gap: var(--medium);
 }
 
-.ingredients_list {
+.ingredient_list {
 	display: flex;
 	flex-direction: column;
+	gap: var(--puny);
 	height: 100%;
 }
 
 .ingredient {
 	display: flex;
-	align-items: center;
 }
 
 .legend_color {
-	margin: var(--puny) var(--tiny) var(--puny) var(--puny);
+	margin: 1px var(--tiny) 0 var(--puny);
 }
 
 .chart {
