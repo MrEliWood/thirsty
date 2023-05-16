@@ -24,11 +24,22 @@
 .ingredients_detail {
 	display: flex;
 	justify-content: space-between;
+	gap: var(--medium);
 }
 
 .ingredients_list {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+}
+
+.ingredient {
+	display: flex;
+	align-items: center;
+}
+
+.legend_color {
+	margin: var(--puny) var(--tiny) var(--puny) var(--puny);
 }
 
 .chart {

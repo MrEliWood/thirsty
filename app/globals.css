@@ -51,6 +51,7 @@ html {
 	height: 100%;
 	scroll-behavior: smooth;
 	font-family: Avenir, Arial, Helvetica, sans-serif;
+	font-size: 17px;
 }
 
 body {
@@ -86,7 +87,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-size: 12px;
+	font-size: 13px;
 	width: 100%;
 	padding: var(--medium) var(--tiny);
 }
@@ -127,21 +128,21 @@ a:hover {
 }
 
 h1 {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 700;
 }
 
 h2 {
-	font-size: 17px;
+	font-size: 20px;
 	font-weight: 700;
 }
 
 h3 {
-	font-size: 17px;
-	font-weight: 300;
+	font-size: 18px;
+	font-weight: 700;
 }
 
 h4 {
-	font-size: 16px;
+	font-size: 17px;
 	font-weight: 700;
 }

@@ -7,6 +7,12 @@ const nextConfig = {
 				hostname: 'www.thecocktaildb.com',
 				port: '',
 				pathname: '/**'
+			},
+			{
+				protocol: 'https',
+				hostname: 'placekitten.com',
+				port: '',
+				pathname: '/**'
 			}
 		]
 	}

@@ -20,8 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				{children}
 
 				<footer>
-					<Link href='/'>Flaticon Link</Link>
-					<Link href='/'>TheCocktailDB Link</Link>
+					<Link href='https://www.flaticon.com/free-icons/cocktail' title='cocktail icon'>
+						Cocktail icon created by Freepik - Flaticon
+					</Link>
+					<Link href='https://www.thecocktaildb.com' title='cocktail data'>
+						Cocktail data provided by TheCocktailDB
+					</Link>
 				</footer>
 			</body>
 		</html>
