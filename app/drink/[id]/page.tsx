@@ -21,7 +21,7 @@ export default function Drink({ params }: { params: { id: string } }) {
 
 	useEffect(() => {
 		getDrink(endpoint).then((drinkData) => {
-			// setDrink(drinkData);
+			setDrink(drinkData);
 			setLoading(false);
 		});
 	}, []);
@@ -45,32 +45,34 @@ export default function Drink({ params }: { params: { id: string } }) {
 		<main className={styles.main}>
 			{drink.id.length ? <Image src={drink.image} alt={drink.name + ' image'} width='150' height='150' className={styles.drink_image} /> : <Skeleton circle={true} width={150} height={150} />}
 
-			<h2 className={styles.drink_name}>{drink.name.length ? drink.name : <Skeleton inline={true} containerClassName={styles.skeleton} />}</h2>
+			<h2 className={styles.drink_name}>{drink.name.length ? drink.name : <Skeleton containerClassName={styles.skeleton} />}</h2>
 
 			<section className={styles.ingredients}>
-				<h4 className={styles.ingredients_label}>Ingredients:</h4>
+				<h4 className={styles.ingredients_label}>{drink.ingredients.length ? 'ingredients:' : <Skeleton containerClassName={styles.skeleton} />}</h4>
 
 				<div className={styles.ingredients_detail}>
 					<div className={styles.ingredient_list}>
-						{drink.ingredients.map((ingredient, i) => (
-							<div key={i} className={styles.ingredient}>
-								<svg width='20' height='20' className={styles.legend_color}>
-									<rect height='20' width='20' rx='3' fill={chartColors[i]} />
-								</svg>
+						{drink.ingredients.length ? (
+							drink.ingredients.map((ingredient: ingredient, i: number) => (
+								<div key={i} className={styles.ingredient}>
+									<svg width='20' height='20' className={styles.legend_color}>
+										<rect height='20' width='20' rx='3' fill={chartColors[i]} />
+									</svg>
 
-								<p>{ingredient.name + (ingredient.measure ? ` (${ingredient.measure})` : '')}</p>
-							</div>
-						))}
+									<p>{ingredient.name + (ingredient.measure ? ` (${ingredient.measure})` : '')}</p>
+								</div>
+							))
+						) : (
+							<Skeleton count={4} containerClassName={styles.skeleton} />
+						)}
 					</div>
 
-					<div className={styles.chart}>
-						<Pie data={chartData} width={100} height={100} />
-					</div>
+					<div className={styles.chart}>{drink.ingredients.length ? <Pie data={chartData} width={100} height={100} /> : <Skeleton circle={true} width={120} height={120} containerClassName={styles.skeleton} />}</div>
 				</div>
 			</section>
 
 			<section className={styles.instructions}>
-				<p>{drink.instructions}</p>
+				<p>{drink.instructions.length ? drink.instructions : <Skeleton count={3} containerClassName={styles.skeleton} />}</p>
 			</section>
 		</main>
 	);
