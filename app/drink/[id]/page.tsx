@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
@@ -12,12 +14,16 @@ ChartJS.register(ArcElement);
 
 export default function Drink({ params }: { params: { id: string } }) {
 	const [drink, setDrink] = useState<drink>({ id: '', name: '', image: '', ingredients: [], instructions: '' });
+	const [loading, setLoading] = useState<boolean>(true);
 
 	// on page load, fetch drink details by id
 	const endpoint = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + params.id;
 
 	useEffect(() => {
-		getDrink(endpoint).then((drinkData) => setDrink(drinkData));
+		getDrink(endpoint).then((drinkData) => {
+			// setDrink(drinkData);
+			setLoading(false);
+		});
 	}, []);
 
 	const chartColors = ['#FF8A80', '#82B1FF', '#CCFF90', '#80D8FF', '#FF80AB', '#F4FF81', '#EA80FC', '#84FFFF', '#FFFF8D', '#B388FF', '#A7FFEB', '#FFE57F', '#8C9EFF', '#B9F6CA', '#FFD180'];
@@ -37,8 +43,9 @@ export default function Drink({ params }: { params: { id: string } }) {
 
 	return (
 		<main className={styles.main}>
-			<Image src={drink.image} alt={drink.name + ' image'} width='150' height='150' className={styles.drink_image} />
-			<h2 className={styles.drink_name}>{drink.name}</h2>
+			{drink.id.length ? <Image src={drink.image} alt={drink.name + ' image'} width='150' height='150' className={styles.drink_image} /> : <Skeleton circle={true} width={150} height={150} />}
+
+			<h2 className={styles.drink_name}>{drink.name.length ? drink.name : <Skeleton inline={true} containerClassName={styles.skeleton} />}</h2>
 
 			<section className={styles.ingredients}>
 				<h4 className={styles.ingredients_label}>Ingredients:</h4>

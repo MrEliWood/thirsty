@@ -1,5 +1,6 @@
 .main {
 	padding: var(--large) var(--tiny) var(--medium);
+	animation: fade-in 0.5s ease-in-out;
 }
 
 .drink_image {
@@ -55,4 +56,17 @@
 	flex-direction: column;
 	width: 100%;
 	padding: 0 var(--medium);
+}
+
+.skeleton {
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }

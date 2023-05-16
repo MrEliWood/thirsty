@@ -1,12 +1,12 @@
 const parseMeasure = (ingredient: ingredient) => {
 	if (ingredient.measure) {
-		const str = ingredient.measure.toLowerCase();
+		const str: string = ingredient.measure.toLowerCase();
 
 		// if there is no numberic value, return half an ounce to populate the chart
 		if (!/\d/.test(str)) return 0.5;
 
 		// extract numeric value from ingredient string
-		let num = eval(str.split(' ')[0]);
+		let num: number = eval(str.split(' ')[0]);
 
 		// if the second value is a fraction, add it to the first value
 		if (str.split(' ')[1] && str.split(' ')[1].includes('/')) num += eval(str.split(' ')[1]);
@@ -22,7 +22,9 @@ const parseMeasure = (ingredient: ingredient) => {
 
 		// if there is no unit of measure, return 1/4 oz to populate the chart
 		if (!str.split(' ')[1] || str.split(' ')[1].includes('/')) return 0.25;
-	} else return 0.25;
+	}
+
+	return 0.25;
 };
 
 export default parseMeasure;

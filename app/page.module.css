@@ -6,6 +6,7 @@
 
 .search_error {
 	margin: var(--small);
+	animation: fade-in 0.5s ease-in-out;
 }
 
 .drink_preview {
@@ -16,6 +17,7 @@
 	height: var(--huge);
 	width: 100%;
 	padding: 0 var(--medium) 0 var(--tiny);
+	animation: fade-in 0.5s ease-in-out;
 }
 
 .drink_preview:hover {
@@ -42,4 +44,23 @@
 
 .drink_name {
 	width: 100%;
+}
+
+.skeleton_container {
+	display: flex;
+	width: 100%;
+}
+
+.skeleton {
+	flex: 1;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }

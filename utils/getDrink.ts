@@ -1,6 +1,6 @@
 const getDrink = async (url: string) => {
-	const res = await fetch(url);
-	const data = await res.json();
+	const res: Response = await fetch(url);
+	const data: any = await res.json();
 
 	// map data to typed object
 	const drinkObject: drink = {
@@ -12,7 +12,7 @@ const getDrink = async (url: string) => {
 	};
 
 	// build ingredient list inside drink object
-	for (let i = 1; i <= 15; i++) {
+	for (let i: number = 1; i <= 15; i++) {
 		if (data.drinks[0]['strIngredient' + i]) {
 			const ingredient: ingredient = {
 				name: data.drinks[0]['strIngredient' + i],

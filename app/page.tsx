@@ -1,18 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
 import Image from 'next/image';
 import Link from 'next/link';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import { searchDrinks } from '@/utils';
 import styles from './page.module.css';
 
 export default function Home() {
 	const [drinks, setDrinks] = useState<drink[]>([]);
-	const [userSearch, setUserSearch] = useState('');
+	const [userSearch, setUserSearch] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(true);
 
-	const endpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + userSearch;
+	const endpoint: string = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + userSearch;
 
 	// make api call on page load
 	useEffect(() => {
@@ -21,9 +23,14 @@ export default function Home() {
 
 	// debounce user search
 	useEffect(() => {
+		setLoading(true);
+
 		// wait 1/2 second before fetching data, limiting excessive api calls for fast typers
-		const timeout = setTimeout(() => {
-			searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
+		const timeout: NodeJS.Timeout = setTimeout(() => {
+			searchDrinks(endpoint).then((drinkData) => {
+				setDrinks(drinkData);
+				setLoading(false);
+			});
 		}, 500);
 
 		return () => clearTimeout(timeout);
@@ -40,6 +47,17 @@ export default function Home() {
 			</div>
 
 			{drinks.map((drink: drink, i) => {
+				// if loading search, return loading animation
+				// loading: opacity = 0 / loaded: opacity = 1
+				if (loading) {
+					return (
+						<div className={styles.drink_preview}>
+							<Skeleton circle={true} width={40} height={40} />
+							<Skeleton width={'100%'} containerClassName={styles.skeleton} />
+						</div>
+					);
+				}
+
 				// if no search results, return error message
 				if (!drink.id) {
 					return (
