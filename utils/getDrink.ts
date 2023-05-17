@@ -23,8 +23,6 @@ const getDrink = async (url: string) => {
 		}
 	}
 
-	console.log(drinkObject);
-
 	return drinkObject;
 };
 

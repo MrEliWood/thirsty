@@ -24,18 +24,18 @@ const Home = () => {
 		if (prev) {
 			// if saved data is less than 24 hours old, update state with previous values
 			const timestamp = JSON.parse(prev).timestamp;
-			if (Date.now() - timestamp > 1000 * 60 * 60 * 24) return;
+			if (Date.now() - timestamp < 1000 * 60 * 60 * 24) {
+				const search = JSON.parse(prev).userSearch;
+				const data = JSON.parse(prev).drinkData;
 
-			const search = JSON.parse(prev).userSearch;
-			const data = JSON.parse(prev).drinkData;
-
-			setUserSearch(search);
-			setDrinks(data);
+				setUserSearch(search);
+				setDrinks(data);
+			} else {
+				searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
+			}
+		} else {
+			searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
 		}
-	}, []);
-
-	useEffect(() => {
-		searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
 	}, []);
 
 	// debounce user search
@@ -50,7 +50,6 @@ const Home = () => {
 
 				// save search locally
 				const timestamp = Date.now();
-
 				localStorage.setItem('Thirsty Cocktail Search', JSON.stringify({ userSearch, drinkData, timestamp }));
 			});
 		}, 500);
