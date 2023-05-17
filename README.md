@@ -6,18 +6,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This web application allows users to search for a cocktail by name. Thanks to TheCocktailDB's massive databse of cocktails, ingredients, and recipes, users are able to get quick results and detailed information on hundreds of mixed drinks.
 
-[![Screenshot of the application](./public/assets/images/desktop-search.png)](http://thirsty-one.vercel.app)
-[![Screenshot of the application](./public/assets/images/desktop-detail.png)](http://thirsty-one.vercel.app)
-[![Screenshot of the application](./public/assets/images/mobile-search.png)](http://thirsty-one.vercel.app)
-[![Screenshot of the application](./public/assets/images/mobile-detail.png)](http://thirsty-one.vercel.app)
-
 ## Table of Contents
 
--  [Deployed Application](http://mreliwood.github.io/porefection)
+-  [Deployed Application](http://https://thirsty-one.vercel.app)
+-  [Screenshots](#screenshots)
 -  [Usage](#usage)
 -  [License](#license)
 -  [Contributing](#contributing)
 -  [Questions](#questions)
+
+## Screenshots
+
+[![Screenshot of the application](./public/assets/images/desktop-search.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/desktop-detail.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/mobile-search.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/mobile-detail.png)](http://thirsty-one.vercel.app)
 
 ## Usage
 
