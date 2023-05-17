@@ -18,8 +18,11 @@ This web application allows users to search for a cocktail by name. Thanks to Th
 ## Screenshots
 
 [![Screenshot of the application](./public/assets/images/desktop-search.png)](http://thirsty-one.vercel.app)
+
 [![Screenshot of the application](./public/assets/images/desktop-detail.png)](http://thirsty-one.vercel.app)
+
 [![Screenshot of the application](./public/assets/images/mobile-search.png)](http://thirsty-one.vercel.app)
+
 [![Screenshot of the application](./public/assets/images/mobile-detail.png)](http://thirsty-one.vercel.app)
 
 ## Usage
