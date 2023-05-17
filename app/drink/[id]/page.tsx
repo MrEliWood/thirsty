@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-import { getDrink, parseMeasure } from '@/utils';
+import { getDrink, parseMeasure, getRandomColors } from '@/utils';
 import styles from './page.module.css';
 
 ChartJS.register(ArcElement);
@@ -26,7 +26,7 @@ const Drink = ({ params }: { params: { id: string } }) => {
 		});
 	}, []);
 
-	const chartColors = ['#FF8A80', '#82B1FF', '#CCFF90', '#80D8FF', '#FF80AB', '#F4FF81', '#EA80FC', '#84FFFF', '#FFFF8D', '#B388FF', '#A7FFEB', '#FFE57F', '#8C9EFF', '#B9F6CA', '#FFD180'];
+	const chartColors = getRandomColors();
 
 	const chartData = {
 		datasets: [
