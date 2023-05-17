@@ -24,9 +24,7 @@ const Header = () => {
 					</Link>
 				)}
 
-				<Link href='/' className={styles.site_title}>
-					<h4>{title ? title : 'Thirsty'}</h4>
-				</Link>
+				<h4 className={styles.site_title}>{title ? title : 'Thirsty'}</h4>
 			</div>
 		</header>
 	);

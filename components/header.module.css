@@ -13,6 +13,12 @@
 	max-width: 480px;
 }
 
+.site_title {
+	margin: 0 90px;
+	text-align: center;
+	cursor: default;
+}
+
 .site_title:hover {
 	opacity: 1;
 }
@@ -20,8 +26,10 @@
 .back_button {
 	position: absolute;
 	left: 0;
+	bottom: 0;
 	display: flex;
 	color: #2562f4 !important;
+	font-weight: 500 !important;
 }
 
 .back_chevron {

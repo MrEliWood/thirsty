@@ -2,14 +2,16 @@ const parseMeasure = (ingredient: ingredient) => {
 	if (ingredient.measure) {
 		const str: string = ingredient.measure.toLowerCase();
 
-		// if there is no numberic value, return 0
-		if (!/\d/.test(str)) return 0;
-
 		// extract numeric value from ingredient string
-		let num: number = eval(str.split(' ')[0]);
+		let num: number = 0;
 
-		// if the second value is a fraction, add it to the first value
-		if (str.split(' ')[1] && str.split(' ')[1].includes('/')) num += eval(str.split(' ')[1]);
+		for (let i = 0; i < str.split(' ').length; i++) {
+			const item = str.split(' ')[i];
+
+			if (/\d/.test(item)) num += eval(item);
+		}
+
+		if (num === 0) return num;
 
 		// return numeric value, converting to oz if necessary
 		if (str.includes('oz') || str.includes('fresh') || str.includes('part')) return num;
@@ -18,10 +20,12 @@ const parseMeasure = (ingredient: ingredient) => {
 		if (str.includes('cl')) return num / 2.957;
 		if (str.includes('ml')) return num / 29.574;
 		if (str.includes('shot')) return num * 1.5;
-		if (str.includes('dash') || str.includes('twist')) return num / 10;
+		if (str.includes('dash') || str.includes('twist') || str.includes('garnish') || str.includes('juice')) return num / 10;
 
 		// if there is no unit of measure, return 0
 		if (!str.split(' ')[1] || str.split(' ')[1].includes('/')) return 0;
+
+		return num;
 	}
 
 	return 0;

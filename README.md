@@ -6,7 +6,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This web application allows users to search for a cocktail by name. Thanks to TheCocktailDB's massive databse of cocktails, ingredients, and recipes, users are able to get quick results and detailed information on hundreds of mixed drinks.
 
-[![Screenshot of the application](./assets/images/porefection-screen-shot.png)](http://mreliwood.github.io/porefection)
+[![Screenshot of the application](./public/assets/images/desktop-search.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/desktop-detail.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/mobile-search.png)](http://thirsty-one.vercel.app)
+[![Screenshot of the application](./public/assets/images/mobile-detail.png)](http://thirsty-one.vercel.app)
 
 ## Table of Contents
 
