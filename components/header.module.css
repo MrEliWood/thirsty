@@ -5,6 +5,25 @@
 	padding: var(--huge) var(--tiny) var(--tiny) var(--tiny);
 }
 
+.header_content {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: 480px;
+}
+
 .site_title:hover {
 	opacity: 1;
+}
+
+.back_button {
+	position: absolute;
+	left: 0;
+	display: flex;
+	color: #2562f4 !important;
+}
+
+.back_chevron {
+	margin: 2px 8px 2px 8px;
 }

@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { searchDrinks } from '@/utils';
 import styles from './page.module.css';
 
-export default function Home() {
+const Home = () => {
 	const [drinks, setDrinks] = useState<drink[]>([]);
 	const [userSearch, setUserSearch] = useState<string>('');
 	const [loading, setLoading] = useState<boolean>(true);
@@ -47,11 +47,10 @@ export default function Home() {
 			</div>
 
 			{drinks.map((drink: drink, i) => {
-				// if loading search, return loading animation
-				// loading: opacity = 0 / loaded: opacity = 1
+				// if loading, return skeleton
 				if (loading) {
 					return (
-						<div className={styles.drink_preview}>
+						<div key={i} className={styles.drink_preview}>
 							<Skeleton circle={true} width={40} height={40} />
 							<Skeleton width={'100%'} containerClassName={styles.skeleton} />
 						</div>
@@ -68,7 +67,13 @@ export default function Home() {
 				}
 
 				return (
-					<Link key={drink.id} href={'/drink/' + drink.id} className={styles.drink_preview}>
+					<Link
+						key={drink.id}
+						href={{
+							pathname: '/drink/' + drink.id,
+							query: { name: drink.name }
+						}}
+						className={styles.drink_preview}>
 						<Image src={drink.image} alt={drink.name + ' image'} width='40' height='40' className={styles.drink_thumbnail} />
 						<p className={styles.drink_name}>{drink.name}</p>
 
@@ -83,4 +88,6 @@ export default function Home() {
 			})}
 		</main>
 	);
-}
+};
+
+export default Home;

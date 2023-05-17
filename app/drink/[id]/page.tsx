@@ -12,7 +12,7 @@ import styles from './page.module.css';
 
 ChartJS.register(ArcElement);
 
-export default function Drink({ params }: { params: { id: string } }) {
+const Drink = ({ params }: { params: { id: string } }) => {
 	const [drink, setDrink] = useState<drink>({ id: '', name: '', image: '', ingredients: [], instructions: '' });
 	const [loading, setLoading] = useState<boolean>(true);
 
@@ -43,16 +43,16 @@ export default function Drink({ params }: { params: { id: string } }) {
 
 	return (
 		<main className={styles.main}>
-			{drink.id.length ? <Image src={drink.image} alt={drink.name + ' image'} width='150' height='150' className={styles.drink_image} /> : <Skeleton circle={true} width={150} height={150} />}
+			{!loading ? <Image src={drink.image} alt={drink.name + ' image'} width='150' height='150' className={styles.drink_image} /> : <Skeleton circle={true} width={150} height={150} />}
 
-			<h2 className={styles.drink_name}>{drink.name.length ? drink.name : <Skeleton containerClassName={styles.skeleton} />}</h2>
+			<h2 className={styles.drink_name}>{!loading ? drink.name : <Skeleton containerClassName={styles.skeleton} />}</h2>
 
 			<section className={styles.ingredients}>
-				<h4 className={styles.ingredients_label}>{drink.ingredients.length ? 'ingredients:' : <Skeleton containerClassName={styles.skeleton} />}</h4>
+				<h4 className={styles.ingredients_label}>{!loading ? 'ingredients:' : <Skeleton containerClassName={styles.skeleton} />}</h4>
 
 				<div className={styles.ingredients_detail}>
 					<div className={styles.ingredient_list}>
-						{drink.ingredients.length ? (
+						{!loading ? (
 							drink.ingredients.map((ingredient: ingredient, i: number) => (
 								<div key={i} className={styles.ingredient}>
 									<svg width='20' height='20' className={styles.legend_color}>
@@ -67,13 +67,15 @@ export default function Drink({ params }: { params: { id: string } }) {
 						)}
 					</div>
 
-					<div className={styles.chart}>{drink.ingredients.length ? <Pie data={chartData} width={100} height={100} /> : <Skeleton circle={true} width={120} height={120} containerClassName={styles.skeleton} />}</div>
+					<div className={styles.chart}>{!loading ? <Pie data={chartData} width={100} height={100} /> : <Skeleton circle={true} width={120} height={120} containerClassName={styles.skeleton} />}</div>
 				</div>
 			</section>
 
 			<section className={styles.instructions}>
-				<p>{drink.instructions.length ? drink.instructions : <Skeleton count={3} containerClassName={styles.skeleton} />}</p>
+				<p>{!loading ? drink.instructions : <Skeleton count={3} containerClassName={styles.skeleton} />}</p>
 			</section>
 		</main>
 	);
-}
+};
+
+export default Drink;

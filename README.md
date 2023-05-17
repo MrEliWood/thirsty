@@ -1,34 +1,45 @@
+# Thirsty &nbsp; ![MIT License](https://img.shields.io/badge/license-MIT-green)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Description
 
-First, run the development server:
+This web application helps allows users to search for a cocktail by name. Thanks to TheCocktailDB's massive databse of cocktails, ingredients, and recipes, users are able to get quick results and detailed information on hundreds of mixed drinks.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+[![Screenshot of the application](./assets/images/porefection-screen-shot.png)](http://mreliwood.github.io/porefection)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-  [Deployed Application](http://mreliwood.github.io/porefection)
+-  [Usage](#usage)
+-  [License](#license)
+-  [Contributing](#contributing)
+-  [Tests](#tests)
+-  [Questions](#questions)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+1. Search for a product that's part of your skincare routine.
+2. A list of common skincare porducts will be fetched from Sephora API and displayed on the screen.
+   -  If your search returned zero results, a list of suggested searches will be displayed instead.
+3. Select a product to add it to your list.
+4. After you've added two or more products, your list will be automatically sorted in the correct order for using your products.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Copyright &copy; 2022 porefection
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-  React.js
+-  Sephora API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tests
+
+Extensive use case tests were performed on every function of this application.
+
+## Questions
+
+[mreliwood on GitHub](https://github.com/mreliwood) &nbsp; | &nbsp; [contact.eliwood@gmail.com](mailto:contact.eliwood@gmail.com)
