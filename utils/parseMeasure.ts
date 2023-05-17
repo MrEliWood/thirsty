@@ -2,8 +2,8 @@ const parseMeasure = (ingredient: ingredient) => {
 	if (ingredient.measure) {
 		const str: string = ingredient.measure.toLowerCase();
 
-		// if there is no numberic value, return 1/4 oz to populate the chart
-		if (!/\d/.test(str)) return 0.25;
+		// if there is no numberic value, return 0
+		if (!/\d/.test(str)) return 0;
 
 		// extract numeric value from ingredient string
 		let num: number = eval(str.split(' ')[0]);
@@ -20,11 +20,11 @@ const parseMeasure = (ingredient: ingredient) => {
 		if (str.includes('shot')) return num * 1.5;
 		if (str.includes('dash') || str.includes('twist')) return num / 10;
 
-		// if there is no unit of measure, return 1/4 oz to populate the chart
-		if (!str.split(' ')[1] || str.split(' ')[1].includes('/')) return 0.25;
+		// if there is no unit of measure, return 0
+		if (!str.split(' ')[1] || str.split(' ')[1].includes('/')) return 0;
 	}
 
-	return 0.25;
+	return 0;
 };
 
 export default parseMeasure;

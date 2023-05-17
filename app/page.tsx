@@ -16,7 +16,24 @@ const Home = () => {
 
 	const endpoint: string = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + userSearch;
 
-	// make api call on page load
+	// on page load
+	useEffect(() => {
+		// check local storage for previous search
+		const prev: string | null = localStorage.getItem('Thirsty Cocktail Search');
+
+		if (prev) {
+			// if saved data is less than 24 hours old, update state with previous values
+			const timestamp = JSON.parse(prev).timestamp;
+			if (Date.now() - timestamp > 1000 * 60 * 60 * 24) return;
+
+			const search = JSON.parse(prev).userSearch;
+			const data = JSON.parse(prev).drinkData;
+
+			setUserSearch(search);
+			setDrinks(data);
+		}
+	}, []);
+
 	useEffect(() => {
 		searchDrinks(endpoint).then((drinkData) => setDrinks(drinkData));
 	}, []);
@@ -30,6 +47,11 @@ const Home = () => {
 			searchDrinks(endpoint).then((drinkData) => {
 				setDrinks(drinkData);
 				setLoading(false);
+
+				// save search locally
+				const timestamp = Date.now();
+
+				localStorage.setItem('Thirsty Cocktail Search', JSON.stringify({ userSearch, drinkData, timestamp }));
 			});
 		}, 500);
 
